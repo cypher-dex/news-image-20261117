@@ -2,167 +2,216 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>The world on Tuesday, 17 November 2026</title>
+<title>The World Today: Tuesday, 17 November 2026</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { width: 1024px; height: 1024px; }
-  body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background: #f4efe4;
-    color: #15181d;
-    display: flex;
-    flex-direction: column;
-  }
-  header {
-    background: #10233f;
-    color: #fff;
-    padding: 22px 34px 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  header .kicker { font-size: 21px; letter-spacing: 3px; text-transform: uppercase; color: #f2c14e; font-weight: 700; }
-  header h1 { font-size: 50px; line-height: 1.05; font-weight: 800; letter-spacing: -0.5px; margin-top: 4px; }
-  header svg { width: 86px; height: 86px; }
-  main {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3, 1fr);
-    gap: 14px;
-    padding: 16px 20px 12px;
-  }
-  .card {
-    background: #fff;
-    border-radius: 14px;
-    border-top: 9px solid var(--c);
-    padding: 14px 18px 12px;
-    display: grid;
-    grid-template-columns: 92px 1fr;
-    column-gap: 14px;
-    align-items: center;
-    box-shadow: 0 2px 0 rgba(0,0,0,0.08);
-  }
-  .card svg { width: 92px; height: 92px; display: block; }
-  .card .place { font-size: 17px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--c); }
-  .card h2 { font-size: 31px; line-height: 1.08; font-weight: 800; margin: 3px 0 6px; }
-  .card p { font-size: 18px; line-height: 1.25; color: #3a3f47; }
-  footer {
-    background: #10233f;
-    color: #fff;
-    font-size: 19px;
-    padding: 12px 24px 14px;
-    line-height: 1.35;
-  }
-  footer b { color: #f2c14e; }
+  html, body { width: 1024px; height: 1024px; overflow: hidden; }
+  body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; background: #f6f1e6; color: #16181c; }
+  .mast { display: flex; align-items: flex-end; justify-content: space-between; padding: 12px 22px 8px; border-bottom: 4px double #16181c; }
+  .mast .name { font-family: Georgia, "Times New Roman", serif; font-size: 40px; font-weight: 700; letter-spacing: -0.5px; line-height: 1; }
+  .mast .date { text-align: right; }
+  .mast .date b { display: block; font-family: Georgia, serif; font-size: 30px; line-height: 1.05; }
+  .mast .date span { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: #8a1c1c; font-weight: 700; }
+  .top { display: grid; grid-template-columns: 560px 1fr; gap: 14px; padding: 10px 22px 8px; border-bottom: 1px solid #16181c; }
+  .lead { display: grid; grid-template-columns: 170px 1fr; gap: 12px; align-items: center; }
+  .lead svg { width: 170px; height: 150px; }
+  .lead .kick { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; color: #8a1c1c; text-transform: uppercase; }
+  .lead h1 { font-family: Georgia, serif; font-size: 30px; line-height: 1.05; margin: 3px 0 6px; }
+  .lead p { font-size: 14px; line-height: 1.3; color: #33373d; }
+  .map { position: relative; }
+  .map svg { width: 100%; height: 170px; display: block; }
+  .map .cap { font-size: 11px; color: #555; text-align: right; margin-top: 2px; }
+  .cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; padding: 6px 12px 0; }
+  .col { padding: 0 10px; border-right: 1px solid #b9b1a0; }
+  .col:last-child { border-right: none; }
+  .col h3 { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: #fff; background: var(--c); padding: 3px 7px; margin: 4px 0 6px; }
+  .item { display: grid; grid-template-columns: 36px 1fr; gap: 6px; margin-bottom: 8px; align-items: start; }
+  .item.noart { grid-template-columns: 1fr; }
+  .item svg { width: 36px; height: 36px; }
+  .item .h { font-size: 14.5px; font-weight: 800; line-height: 1.15; }
+  .item .h i { font-style: normal; display: inline-block; min-width: 18px; height: 18px; border-radius: 9px; background: var(--c); color: #fff; font-size: 11px; text-align: center; line-height: 18px; margin-right: 4px; vertical-align: 1px; }
+  .item .d { font-size: 12px; line-height: 1.25; color: #3b3f45; margin-top: 1px; }
+  .fig { display: grid; grid-template-columns: 88px 1fr; gap: 8px; align-items: center; margin-bottom: 6px; }
+  .fig b { font-family: Georgia, serif; font-size: 23px; color: #8a1c1c; text-align: right; white-space: nowrap; }
+  .fig span { font-size: 12px; line-height: 1.2; color: #33373d; }
+  .foot { position: absolute; left: 0; right: 0; bottom: 0; background: #16181c; color: #f6f1e6; font-size: 12.5px; padding: 6px 22px; }
+  .foot b { color: #f2c14e; }
 </style>
 </head>
 <body>
-  <header>
-    <div>
-      <div class="kicker">One day's world news</div>
-      <h1>Tuesday, 17 November 2026</h1>
+  <div class="mast">
+    <div class="name">The World Today</div>
+    <div class="date"><span>One day's news · 33 stories · 6 continents</span><b>Tuesday, 17 November 2026</b></div>
+  </div>
+
+  <div class="top">
+    <div class="lead">
+      <svg viewBox="0 0 170 150" aria-label="Kerch bridge struck">
+        <rect width="170" height="150" fill="#cfe0ef"/>
+        <rect y="112" width="170" height="38" fill="#6f9cc8"/>
+        <rect x="0" y="86" width="170" height="10" fill="#4b5563"/>
+        <g fill="#374151"><rect x="14" y="96" width="8" height="30"/><rect x="50" y="96" width="8" height="30"/><rect x="112" y="96" width="8" height="30"/><rect x="148" y="96" width="8" height="30"/></g>
+        <path d="M62 86 L70 112 L78 92 L86 116 L96 90 Z" fill="#cfe0ef"/>
+        <path d="M84 40 l8 20 18-10-8 20 22 6-22 6 10 18-20-10-8 20-6-20-20 10 10-18-22-6 22-6-8-20 18 10z" fill="#f59e0b"/>
+        <path d="M84 56 l4 10 10-6-4 12 12 4-12 4 6 10-12-6-4 12-4-12-12 6 6-10-12-4 12-4-4-12 10 6z" fill="#dc2626"/>
+        <path d="M30 30 q20-14 40-4 M110 24 q16-10 34 0" stroke="#6b7280" stroke-width="5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div class="kick">Lead · Ukraine–Russia war</div>
+        <h1>Ukraine hits the Crimea bridge in its biggest drone strike of the war</h1>
+        <p>Second day of attacks damages the Kerch road and rail link and Russian refineries; Moscow says it downed 2,000+ drones. Kyiv logs a record 17 air-raid alerts.</p>
+      </div>
     </div>
-    <svg viewBox="0 0 88 88" aria-label="globe">
-      <circle cx="44" cy="44" r="40" fill="#2f7fd1"/>
-      <path d="M22 26c8-6 16-4 20 2s-2 10 4 14 2 12-6 14-10-6-14-10-10-14-4-20z" fill="#6cc04a"/>
-      <path d="M54 18c8 2 16 10 18 20s-6 8-10 4-14-6-12-14 0-12 4-10z" fill="#6cc04a"/>
-      <path d="M56 60c6-2 10 2 8 8s-10 8-12 4 0-10 4-12z" fill="#6cc04a"/>
-      <circle cx="44" cy="44" r="40" fill="none" stroke="#fff" stroke-width="3"/>
-    </svg>
-  </header>
-  <main>
-    <section class="card" style="--c:#1d5fbf">
-      <svg viewBox="0 0 88 88" aria-label="bridge hit">
-        <rect x="4" y="56" width="80" height="8" fill="#1d5fbf"/>
-        <rect x="16" y="22" width="6" height="52" fill="#10233f"/>
-        <rect x="64" y="22" width="6" height="52" fill="#10233f"/>
-        <path d="M19 24 L4 56 M19 24 L34 56 M67 24 L52 56 M67 24 L84 56" stroke="#10233f" stroke-width="2.5"/>
-        <rect x="0" y="74" width="88" height="12" fill="#9cc3ee"/>
-        <path d="M44 30 l5 12 12-6-6 12 12 5-12 4 6 12-12-6-5 12-4-12-12 6 5-12-12-4 12-5-5-12 12 6z" fill="#f59e0b"/>
-        <path d="M44 40 l3 7 7-3-3 7 7 3-7 2 3 7-7-3-3 7-2-7-7 3 3-7-7-2 7-3-3-7 7 3z" fill="#dc2626"/>
-      </svg>
-      <div>
-        <div class="place">Ukraine · Crimea</div>
-        <h2>Ukraine strikes the Kerch bridge again</h2>
-        <p>Second day of drone and missile hits on the Russia–Crimea road and rail link; a section is damaged.</p>
-      </div>
-    </section>
-    <section class="card" style="--c:#c2410c">
-      <svg viewBox="0 0 88 88" aria-label="summit in Manila">
-        <path d="M44 6c-14 0-24 10-24 23 0 17 24 43 24 43s24-26 24-43C68 16 58 6 44 6z" fill="#c2410c"/>
-        <circle cx="44" cy="29" r="9" fill="#fff"/>
-        <rect x="12" y="76" width="64" height="6" rx="3" fill="#10233f"/>
-        <path d="M6 48 l26 8 -4 4 -16-2z M82 48 l-26 8 4 4 16-2z" fill="#9aa3ad"/>
-      </svg>
-      <div>
-        <div class="place">Philippines · Asia trip</div>
-        <h2>Trump lands in Manila</h2>
-        <p>Quad leaders sign critical‑minerals deals amid protests; next stop: Shenzhen summit with Xi and Putin.</p>
-      </div>
-    </section>
-    <section class="card" style="--c:#b91c1c">
-      <svg viewBox="0 0 88 88" aria-label="radar under drone attack">
-        <path d="M10 30 Q30 70 66 50 Z" fill="#c9ced6" stroke="#10233f" stroke-width="3"/>
-        <path d="M38 46 L52 26" stroke="#10233f" stroke-width="3"/>
-        <circle cx="53" cy="24" r="4" fill="#10233f"/>
-        <path d="M34 56 L26 80 H54 L46 58 Z" fill="#10233f"/>
-        <path d="M60 10 L84 10 L76 16 L68 16 Z" fill="#b91c1c"/>
-        <path d="M66 8 h12" stroke="#b91c1c" stroke-width="3"/>
-        <path d="M70 20 q-4 6 -10 8" stroke="#b91c1c" stroke-width="2.5" fill="none" stroke-dasharray="3 3"/>
-      </svg>
-      <div>
-        <div class="place">Gulf · Iran–US</div>
-        <h2>Iranian drones target US radar in Bahrain</h2>
-        <p>Third such attack in five days; US strikes a missile site on Iran's Qeshm Island; tanker hit off Oman.</p>
-      </div>
-    </section>
-    <section class="card" style="--c:#15803d">
-      <svg viewBox="0 0 88 88" aria-label="virus">
-        <g stroke="#15803d" stroke-width="5" stroke-linecap="round">
-          <path d="M44 8v14M44 66v14M8 44h14M66 44h14M19 19l10 10M59 59l10 10M69 19l-10 10M29 59l-10 10"/>
-        </g>
-        <g fill="#15803d"><circle cx="44" cy="8" r="5"/><circle cx="44" cy="80" r="5"/><circle cx="8" cy="44" r="5"/><circle cx="80" cy="44" r="5"/>
-        <circle cx="19" cy="19" r="5"/><circle cx="69" cy="69" r="5"/><circle cx="69" cy="19" r="5"/><circle cx="19" cy="69" r="5"/></g>
-        <circle cx="44" cy="44" r="24" fill="#22a052"/>
-        <circle cx="36" cy="38" r="5" fill="#bfe8c9"/><circle cx="52" cy="50" r="6" fill="#bfe8c9"/><circle cx="50" cy="34" r="3" fill="#bfe8c9"/>
-      </svg>
-      <div>
-        <div class="place">DR Congo · Health</div>
-        <h2>Ebola spreading at record pace</h2>
-        <p>11,254 confirmed cases and 5,505 deaths in six months, Reuters data review finds.</p>
-      </div>
-    </section>
-    <section class="card" style="--c:#7c3aed">
-      <svg viewBox="0 0 88 88" aria-label="government building">
-        <path d="M44 6 L82 26 H6z" fill="#7c3aed"/>
-        <rect x="8" y="28" width="72" height="6" fill="#5b21b6"/>
-        <g fill="#7c3aed"><rect x="14" y="36" width="8" height="34"/><rect x="31" y="36" width="8" height="34"/><rect x="49" y="36" width="8" height="34"/><rect x="66" y="36" width="8" height="34"/></g>
-        <rect x="6" y="72" width="76" height="8" fill="#5b21b6"/>
-        <path d="M58 46 l22 22 M80 46 l-22 22" stroke="#dc2626" stroke-width="6" stroke-linecap="round"/>
-      </svg>
-      <div>
-        <div class="place">Mongolia · Politics</div>
-        <h2>President Khürelsükh resigns</h2>
-        <p>Quits over railway‑deal corruption claims from his own party; he denies wrongdoing.</p>
-      </div>
-    </section>
-    <section class="card" style="--c:#0f766e">
-      <svg viewBox="0 0 88 88" aria-label="home in Jericho">
-        <path d="M44 10 L80 40 H8z" fill="#0f766e"/>
-        <rect x="16" y="40" width="56" height="38" fill="#d9c7a3"/>
-        <rect x="38" y="54" width="12" height="24" fill="#6b4f2a"/>
-        <rect x="22" y="48" width="10" height="10" fill="#fff"/><rect x="56" y="48" width="10" height="10" fill="#fff"/>
-      </svg>
-      <div>
-        <div class="place">West Bank · Israel</div>
-        <h2>Settlers kill a woman, 72, in Jericho</h2>
-        <p>UK sanctions eight Israeli settlement builders; Eisenkot ally elected Knesset speaker.</p>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <b>ALSO 17 NOV:</b> NSA classified network goes down amid a run of US outages · Japan scrambles jets over Russian airspace incursion · Moldova says Russian drone flew over Chișinău · COP31 climate talks continue in Türkiye
-  </footer>
+    <div class="map">
+      <svg id="map" viewBox="0 0 360 170" aria-label="world map of the day's stories"></svg>
+      <div class="cap">Numbers on the map match the stories below</div>
+    </div>
+  </div>
+
+  <div class="cols" id="cols"></div>
+
+  <div class="foot"><b>ALSO 17 NOV:</b> OpenAI releases a free AI tool to detect child-abuse images · ECB and Fed officials warn AI threatens financial stability · Crystal Palace name Thomas Frank manager</div>
+
+<script>
+// Each story: map number, region column, headline, one-line detail, [lon, lat], icon name (or none).
+const STORIES = [
+  [1, 'eu', 'Crimea bridge hit (lead)', 'Kerch link damaged; refineries struck', [36.5, 45.3], 'bridge'],
+  [2, 'eu', "Serbia's student-led parliament sits", 'First session after the movement ousted Vučić', [20.5, 44.8], 'parliament'],
+  [3, 'eu', 'Kosovo ex-president Thaçi convicted again', '17 more months for obstructing justice', [21.2, 42.7], 'gavel'],
+  [4, 'eu', 'Russian drone over Chișinău', "Moldova's Sandu says it flew over the capital", [28.8, 47.0], 'drone'],
+  [5, 'eu', 'Turkey seizes Sözcü TV', 'Opposition channel raided and taken off air', [29.0, 41.0], 'tv'],
+  [6, 'eu', 'Five EU states plan Rwanda return hub', 'For rejected asylum seekers, from 2027', [10.0, 52.5], null],
+  [7, 'eu', 'Dublin attacker jailed for life', 'Stabbing that sparked 2023 riots', [-6.3, 53.3], null],
+  [8, 'me', 'Iranian drones target US radar in Bahrain', 'Third attack in five days; US strikes Qeshm Island', [50.6, 26.1], 'drone'],
+  [9, 'me', 'Ships ablaze in Strait of Hormuz', 'LNG carrier and a supertanker among them', [56.3, 26.6], 'ship'],
+  [10, 'me', 'Settlers kill woman, 72, in Jericho', 'UK sanctions eight settlement builders', [35.4, 31.9], 'house'],
+  [11, 'me', 'Eisenkot ally elected Knesset speaker', 'E1 settlement tender frozen; vote-meddling row', [35.2, 31.8], 'parliament'],
+  [12, 'me', 'Jordan blocks Telegram', 'Cites extremism after church attack', [35.9, 31.9], null],
+  [13, 'me', 'Strike on Hudaydah factory', 'Houthis say 7 killed by Saudi raid', [42.9, 14.8], null],
+  [14, 'me', 'Iraq militia standoff at Jurf al-Sakhar', 'Kataib Hezbollah warns the army off', [44.1, 32.9], null],
+  [15, 'as', 'Trump lands in Manila', 'Quad signs critical-minerals deals amid protests', [121.0, 14.6], 'handshake'],
+  [16, 'as', 'Mongolian president resigns', 'Khürelsükh quits over $25m railway claim', [106.9, 47.9], 'resign'],
+  [17, 'as', 'China and Canada widen tariff relief', 'Carney meets Xi in Shenzhen', [114.1, 22.5], 'trade'],
+  [18, 'as', 'Japan scrambles jets', 'Two Russian aircraft violate its airspace', [140.0, 41.0], 'jet'],
+  [19, 'as', 'COP31 talks in Antalya', 'AI energy use raised; US boycotts', [30.7, 36.9], 'leaf'],
+  [20, 'af', 'Ebola spreads at record pace in DR Congo', '11,254 cases and 5,505 deaths in six months', [29.2, -1.7], 'virus'],
+  [21, 'af', 'Guinea jails 224 over illegal gold mining', '202 miners and 22 officials sentenced', [-9.7, 10.4], 'gold'],
+  [22, 'af', 'Rwanda in EU return-hub talks', 'Would host migrants from five EU states', [30.1, -1.9], null],
+  [23, 'am', "NSA's classified network goes down", 'Latest in a run of US outages', [-76.8, 39.1], 'outage'],
+  [24, 'am', 'Haitians rally for Salvadoran troops', 'Want the anti-gang force to stay', [-72.3, 18.5], null],
+  [25, 'am', 'Ecuadorian fishermen sue Trump team', '16 survivors of a US boat strike', [-79.9, -2.2], 'ship'],
+  [26, 'am', 'Mexican journalist found dead', 'Eduardo Flores Salado killed in Acapulco', [-99.9, 16.9], null],
+  [27, 'am', 'Nurses back Van Hollen for Senate leader', 'Challenge to Schumer grows', [-77.0, 38.9], null],
+  [28, 'wd', 'WHO: superbugs may kill 39m by 2050', 'Antimicrobial resistance week begins', [6.1, 46.2], 'pill'],
+  [29, 'wd', 'Nvidia scandal: Trump open to Huang return', 'May raise spy claims with Xi', [-122.0, 37.4], 'chip'],
+  [30, 'wd', 'Diallo to challenge Infantino at FIFA', 'UEFA backs the French FA chief for 2027', [2.3, 48.9], 'ball'],
+  [31, 'wd', 'Data centres emit as much as Denmark', 'Harvard study in Nature Sustainability', [-71.1, 42.4], null],
+  [32, 'wd', 'Germany: let more aid into Gaza', 'Wadephul warns as winter nears', [34.4, 31.4], null],
+  [33, 'wd', 'Pentagon fails 9th audit in a row', 'But 56% of assets now pass', [-77.1, 38.9], null],
+];
+
+const COLUMNS = [
+  ['eu', 'Europe', '#1d4ed8'],
+  ['me', 'Middle East', '#b91c1c'],
+  ['as', 'Asia & Pacific', '#c2410c'],
+  ['af', 'Africa', '#15803d'],
+  ['am', 'Americas', '#7c3aed'],
+  ['wd', 'World · Science · Sport', '#0f766e'],
+];
+const COLOR = Object.fromEntries(COLUMNS.map(([k, , c]) => [k, c]));
+
+// Simple flat icons, drawn on a 34x34 grid.
+const ICONS = {
+  bridge: '<rect y="18" width="34" height="4" fill="#4b5563"/><rect x="6" y="8" width="3" height="20" fill="#374151"/><rect x="25" y="8" width="3" height="20" fill="#374151"/><path d="M15 6l3 6 5-3-3 6 6 2-6 2 3 6-5-3-3 6-2-6-5 3 3-6-6-2 6-2-3-6 5 3z" fill="#f59e0b"/>',
+  parliament: '<path d="M17 3L32 12H2z" fill="C"/><rect x="4" y="13" width="26" height="3" fill="C"/><g fill="C"><rect x="6" y="17" width="3" height="11"/><rect x="13" y="17" width="3" height="11"/><rect x="19" y="17" width="3" height="11"/><rect x="25" y="17" width="3" height="11"/></g><rect x="3" y="29" width="28" height="3" fill="C"/>',
+  gavel: '<rect x="6" y="6" width="16" height="7" rx="2" transform="rotate(-35 14 10)" fill="C"/><path d="M15 14L27 28" stroke="#6b4f2a" stroke-width="3.5" stroke-linecap="round"/><rect x="3" y="28" width="16" height="3" fill="#6b4f2a"/>',
+  drone: '<rect x="12" y="14" width="10" height="6" rx="2" fill="C"/><path d="M4 10h10M20 10h10M9 10v5M25 10v5" stroke="C" stroke-width="2.5"/><path d="M17 22v6M14 28h6" stroke="#6b7280" stroke-width="2"/>',
+  tv: '<rect x="3" y="7" width="28" height="19" rx="3" fill="C"/><rect x="6" y="10" width="22" height="13" fill="#e5e7eb"/><path d="M8 12l18 9M26 12l-18 9" stroke="#dc2626" stroke-width="2.5"/><path d="M12 30h10" stroke="C" stroke-width="3"/>',
+  ship: '<path d="M3 20h28l-5 8H8z" fill="C"/><rect x="10" y="12" width="12" height="8" fill="#9ca3af"/><path d="M20 4q4 4 0 8q-4-4 0-8z" fill="#f97316"/><path d="M2 31q4-3 8 0t8 0 8 0 8 0" stroke="#60a5fa" stroke-width="2" fill="none"/>',
+  house: '<path d="M17 4L31 16H3z" fill="C"/><rect x="6" y="16" width="22" height="14" fill="#d9c7a3"/><rect x="14" y="21" width="6" height="9" fill="#6b4f2a"/>',
+  handshake: '<path d="M2 14l9-5 7 4 7-4 7 5v6l-9 7-6-4-6 4-9-7z" fill="C"/><path d="M11 17l5 4 5-4" stroke="#fff" stroke-width="2" fill="none"/>',
+  resign: '<rect x="7" y="4" width="20" height="26" rx="2" fill="#f3f4f6" stroke="C" stroke-width="2"/><path d="M11 11h12M11 16h12M11 21h8" stroke="#9ca3af" stroke-width="2"/><path d="M18 26q4-6 8-2" stroke="C" stroke-width="2.5" fill="none"/>',
+  trade: '<path d="M4 12h20l-5-5M30 22H10l5 5" stroke="C" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+  jet: '<path d="M3 17l12-2 7-11h4l-4 11 8 1 3-4h2l-1 5 1 5h-2l-3-4-8 1 4 11h-4l-7-11-12-2z" fill="C"/>',
+  leaf: '<path d="M5 30Q4 6 30 4Q32 28 5 30z" fill="C"/><path d="M7 28Q14 16 26 8" stroke="#ecfccb" stroke-width="2" fill="none"/>',
+  virus: '<g stroke="C" stroke-width="2.5"><path d="M17 2v6M17 26v6M2 17h6M26 17h6M6 6l4 4M24 24l4 4M28 6l-4 4M10 24l-4 4"/></g><circle cx="17" cy="17" r="9" fill="C"/><circle cx="14" cy="15" r="2" fill="#bbf7d0"/><circle cx="20" cy="20" r="2.5" fill="#bbf7d0"/>',
+  gold: '<path d="M4 26l5-10h16l5 10z" fill="#eab308"/><path d="M10 16l4-8h6l4 8z" fill="#facc15"/><path d="M20 4l10 10" stroke="#6b7280" stroke-width="3"/>',
+  outage: '<rect x="3" y="5" width="28" height="18" rx="2" fill="C"/><rect x="6" y="8" width="22" height="12" fill="#111827"/><path d="M14 10l6 8M20 10l-6 8" stroke="#ef4444" stroke-width="2.5"/><path d="M12 29h10M17 23v6" stroke="C" stroke-width="3"/>',
+  pill: '<rect x="4" y="12" width="26" height="11" rx="5.5" fill="C" transform="rotate(-30 17 17)"/><path d="M12 10l10 14" stroke="#fff" stroke-width="2"/>',
+  chip: '<rect x="8" y="8" width="18" height="18" rx="2" fill="C"/><rect x="13" y="13" width="8" height="8" fill="#ccfbf1"/><g stroke="C" stroke-width="2"><path d="M12 3v5M17 3v5M22 3v5M12 26v5M17 26v5M22 26v5M3 12h5M3 17h5M3 22h5M26 12h5M26 17h5M26 22h5"/></g>',
+  ball: '<circle cx="17" cy="17" r="13" fill="#fff" stroke="C" stroke-width="2.5"/><path d="M17 10l6 4-2 7h-8l-2-7z" fill="C"/>',
+};
+
+function icon(name, color) {
+  return `<svg viewBox="0 0 34 34" aria-hidden="true">${ICONS[name].replaceAll('"C"', `"${color}"`)}</svg>`;
+}
+
+// The day in figures, shown as a panel in the shorter columns.
+const FIGURES = [
+  ['2,000+', 'drones Russia says it downed in 24 hours'],
+  ['17', 'air-raid alerts in Kyiv in one day, a record'],
+  ['5,505', 'Ebola deaths in DR Congo in six months'],
+  ['$25m', 'alleged railway payment to Mongolia\'s president'],
+  ['3', 'Iranian drone attacks on Bahrain in five days'],
+  ['39m', 'superbug deaths projected by 2050'],
+];
+
+function figures(rows) {
+  return `<h3 style="--c:#16181c">The day in figures</h3>` + rows.map(([n, t]) =>
+    `<div class="fig"><b>${n}</b><span>${t}</span></div>`).join('');
+}
+
+function renderColumns() {
+  const groups = [['eu', 'af'], ['me', 'fig:0:3'], ['as', 'am'], ['wd', 'fig:3:6']];
+  const html = groups.map((keys) => {
+    const parts = keys.map((key) => {
+      if (key.startsWith('fig:')) {
+        const [, from, to] = key.split(':').map(Number);
+        return figures(FIGURES.slice(from, to));
+      }
+      const [, title, color] = COLUMNS.find(([k]) => k === key);
+      const items = STORIES.filter((s) => s[1] === key && s[0] !== 1).map(([n, , head, detail, , art]) => `
+        <div class="item${art ? '' : ' noart'}" style="--c:${color}">
+          ${art ? icon(art, color) : ''}
+          <div><div class="h"><i>${n}</i>${head}</div><div class="d">${detail}</div></div>
+        </div>`).join('');
+      return `<h3 style="--c:${color}">${title}</h3>${items}`;
+    }).join('');
+    return `<div class="col">${parts}</div>`;
+  }).join('');
+  document.getElementById('cols').innerHTML = html;
+}
+
+// Coarse continent outlines in [lon, lat], equirectangular.
+const LAND = [
+  [[-168,66],[-140,70],[-95,72],[-80,63],[-62,58],[-55,50],[-66,44],[-76,35],[-81,25],[-90,29],[-97,26],[-105,20],[-87,14],[-79,9],[-83,8],[-92,15],[-106,23],[-115,30],[-124,40],[-124,48],[-135,57],[-150,60],[-165,60]],
+  [[-45,60],[-20,66],[-22,76],[-40,83],[-60,80],[-55,70]],
+  [[-79,9],[-72,12],[-60,10],[-50,0],[-35,-7],[-40,-22],[-48,-28],[-58,-38],[-65,-55],[-72,-50],[-73,-35],[-71,-18],[-81,-5],[-78,2]],
+  [[-10,36],[-9,43],[-2,44],[-5,48],[3,51],[8,54],[10,57],[5,62],[14,68],[25,71],[40,68],[45,60],[30,59],[28,54],[40,47],[30,45],[28,41],[22,40],[18,40],[12,44],[10,44],[3,43],[-4,37]],
+  [[-17,15],[-17,21],[-10,30],[-6,35],[10,37],[20,32],[32,31],[35,28],[43,12],[51,12],[42,-2],[40,-15],[35,-25],[20,-35],[15,-28],[12,-12],[9,-1],[8,4],[-8,5],[-13,8]],
+  [[35,31],[36,36],[30,40],[45,42],[55,45],[50,38],[57,26],[52,24],[56,23],[59,22],[55,17],[45,13],[43,15],[38,22],[35,28]],
+  [[45,42],[60,55],[60,68],[80,73],[110,77],[140,72],[170,70],[180,66],[160,58],[140,54],[135,43],[125,40],[122,30],[110,20],[106,10],[100,13],[98,8],[92,22],[88,22],[80,15],[77,8],[72,20],[66,25],[57,26],[50,38],[55,45]],
+  [[114,-22],[122,-18],[131,-12],[137,-12],[142,-10],[146,-19],[153,-26],[150,-37],[140,-38],[132,-32],[116,-34],[114,-26]],
+  [[130,31],[132,34],[136,35],[140,36],[141,41],[142,45],[140,42],[137,37],[132,33]],
+  [[95,5],[105,-6],[118,-9],[125,-9],[120,-4],[109,-1],[100,2]],
+  [[-6,50],[-5,55],[-3,58],[0,53],[1,51]],
+];
+
+function project([lon, lat]) {
+  return [(lon + 180) * (360 / 360), (90 - lat) * (170 / 150) - 18];
+}
+
+function renderMap() {
+  const land = LAND.map((poly) => `<path d="M${poly.map((p) => project(p).map((v) => v.toFixed(1)).join(',')).join('L')}Z" fill="#d8cfb9" stroke="#a89f8a" stroke-width="0.6"/>`).join('');
+  const pins = STORIES.map(([n, key, , , ll]) => {
+    const [x, y] = project(ll);
+    return `<g><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5.2" fill="${COLOR[key]}" stroke="#fff" stroke-width="1"/><text x="${x.toFixed(1)}" y="${(y + 2.5).toFixed(1)}" font-size="6.5" font-weight="700" text-anchor="middle" fill="#fff" font-family="Helvetica, Arial">${n}</text></g>`;
+  }).join('');
+  document.getElementById('map').innerHTML = `<rect width="360" height="170" fill="#e6eef5"/>${land}${pins}`;
+}
+
+renderColumns();
+renderMap();
+</script>
 </body>
 </html>
